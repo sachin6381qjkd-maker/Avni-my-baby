@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Pyaari Avni ❤️</title>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --glass: rgba(255, 255, 255, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: linear-gradient(135deg, #fff5f7 0%, #f8bbd0 100%);
+            height: 100vh; width: 100vw; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Glassmorphism Container */
+        .page {
+            display: none; width: 90%; max-width: 380px;
+            background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 30px;
+            padding: 25px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            z-index: 10; position: relative;
+            max-height: 90vh; overflow-y: auto;
+        }
+        .active { display: block; animation: fadeIn 0.5s ease-out; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        h1 { color: #d81b60; font-size: 1.4rem; margin-bottom: 15px; }
+
+        /* Professional Photo Slider */
+        .slider-container {
+            width: 100%; aspect-ratio: 1/1; border-radius: 20px;
+            overflow: hidden; background: #eee; margin-bottom: 20px;
+            position: relative;
+        }
+        .slider { display: flex; transition: transform 0.5s ease-in-out; height: 100%; }
+        .slide { min-width: 100%; height: 100%; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Button Layout */
+        .btn-group {
+            display: flex; justify-content: center; gap: 20px;
+            height: 50px; position: relative; align-items: center;
+            margin-top: 10px;
+        }
+        
+        .btn-yes {
+            background: var(--primary-pink); color: white;
+            padding: 12px 30px; border-radius: 50px; border: none;
+            font-weight: bold; font-size: 1.1rem; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            z-index: 10;
+        }
+
+        #noBtn {
+            background: #9e9e9e; color: white;
+            padding: 12px 30px; border-radius: 50px; border: none;
+            font-weight: bold; font-size: 1.1rem; cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 999;
+        }
+
+        /* Navigation Arrows/Buttons */
+        .next-arrow { position: absolute; bottom: 15px; right: 20px; font-size: 2rem; cursor: pointer; }
+        
+        /* Shayri Page Styling */
+        .shayri-container {
+            font-style: italic;
+            color: #4a4a4a;
+            line-height: 1.6;
+            font-size: 1rem;
+            text-align: center;
+            padding: 10px;
+        }
+        .shayri-container p { margin-bottom: 15px; }
+        .shayri-btn {
+            margin-top: 20px;
+            background: none;
+            border: 2px solid var(--primary-pink);
+            color: var(--primary-pink);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-style: italic;
+            cursor: pointer;
+        }
+
+        .graffiti { font-family: 'Comic Sans MS', cursive; color: #ff0055; font-size: 1.4rem; font-weight: bold; }
+
+        /* Diamond Ring */
+        #ring { font-size: 100px; display: none; margin: 20px 0; }
+        #ring.show { display: block; animation: ringPop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes ringPop { from { transform: scale(0); } to { transform: scale(1.2); } }
+    </style>
+</head>
+<body>
+
+    <div class="page active" id="page1">
+        <h1>AVNI, WILL YOU BE MY VALENTINE? ❤️</h1>
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=500" alt="Rose 1"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1559563458-527698bf5295?q=80&w=500" alt="Rose 2"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=500" alt="Rose 3"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1548610762-7c6abc25c28e?q=80&w=500" alt="Rose 4"></div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button class="btn-yes" onclick="showPage(2)">YES!</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="page" id="page2">
+        <div class="graffiti">
+            I LOVVVVVVVEEEEEE YOUUUUUUUUUUUUUUUUUUUUUU SOOOOOO MUCHHHH MERI PYAAAAARRRRIIIII AVNI 💘💕💖
+        </div>
+        <div class="next-arrow" onclick="showPage(3)">➡️</div>
+    </div>
+
+    <div class="page" id="page3">
+        <h1>One more thing...<br>Will you Marry me? 💍</h1>
+        <div id="ring">💎💍</div>
+        <button class="btn-yes" id="marryBtn" onclick="revealRing()">YES!</button>
+        <div id="arzSection" style="display:none; margin-top: 20px;">
+            <button class="shayri-btn" onclick="showPage(4)">Arz kiya hai....</button>
+        </div>
+    </div>
+
+    <div class="page" id="page4">
+        <h1 style="color: #d81b60;">AVNI MERI JAAN-E-MAN</h1>
+        <div class="shayri-container">
+            <p>Kabhi yun bhi aa meri aankhon mein,<br>Ke meri nazar ko sukoon mil jaaye,<br>Jo dhadkan se dhadkan tak jaaye,<br>Woh ek hi naam Avni ho jaaye.</p>
+            
+            <p>Main tumhe chahun toh izhaar kam pad jaaye,<br>Main chup rahoon toh iqraar ho jaaye.<br>Tumhari muskaan ki halki si jhalak,<br>Mere din ko mehka bahaar ho jaaye.</p>
+            
+            <p>Faaslon ke bawajood, tum meri har dhadkan mein basi rehti ho,<br>Tum baat karo toh dua si lagti hai.<br>Tumhari awaaz ka narm sa lehja,<br>Jaise raat mein chaandni si jagti hai.</p>
+            
+            <p><strong>Avni,</strong><br>Main tumhe sirf lafzon mein nahi chahta,<br>Main tumhe apni rooh mein basaata hoon.<br>Tum meri aadat nahi, meri ibaadat ho,<br>Main har sajde mein tumhe paata hoon.</p>
+            
+            <p>Aao ke ishq ko naam dein hum,<br>Khamoshi ko paighaam dein hum,<br>Jo rishta sirf dil samajh sake,<br>Us rishtay ko anjaam dein hum. ❤️✨</p>
+        </div>
+    </div>
+
+    <script>
+        function showPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+        }
+
+        // NO BUTTON RUNNING LOGIC
+        const noBtn = document.getElementById('noBtn');
+        function moveButton() {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 60);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 60);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
+
+        // Reveal Ring and Show Shayri Button
+        function revealRing() {
+            document.getElementById('ring').classList.add('show');
+            document.getElementById('marryBtn').style.display = 'none';
+            document.getElementById('arzSection').style.display = 'block';
+        }
+
+        // Slider
+        let current = 0;
+        setInterval(() => {
+            current = (current + 1) % 4; 
+            document.getElementById('slider').style.transform = `translateX(-${current * 100}%)`;
+        }, 3000);
+    </script>
+</body>
+</html>
